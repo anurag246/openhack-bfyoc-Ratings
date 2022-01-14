@@ -9,7 +9,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     logging.info('Python HTTP trigger function processed a request.')
 
     prodId = req.params.get('productId')
-    print ("testing **********")
+    print ("testing *********")
    
     if not prodId:
         try:
@@ -26,7 +26,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     if prodId:
         queryGetProduct = {'productId':prodId}
         responseGetProduct = requests.get('https://serverlessohapi.azurewebsites.net/api/GetProduct', params=queryGetProduct)
-        print( responseGetProduct.json())
+        #print( responseGetProduct.status_code)
         if responseGetProduct.status_code==200:
             print ("Product Id Validated Successfully")
         else:
@@ -40,7 +40,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     if userId:
         queryGetUser = {'userId':userId}
         responseGetUser = requests.get('https://serverlessohapi.azurewebsites.net/api/GetUser', params=queryGetUser)
-        print(responseGetUser.json())
+        print(responseGetUser.status_code)
         if responseGetUser.status_code==200:
            print ("User Id Validated Successfully")
         else:
